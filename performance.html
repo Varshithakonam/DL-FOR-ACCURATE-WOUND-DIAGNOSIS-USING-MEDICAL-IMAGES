@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performances</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Basic Styles */
+        body {
+            background-color: #52caf2;
+            background-image: url('../static/p1.jpg'); /* Replace with your image URL */
+            background-size: cover; /* Ensure the background covers the whole page */
+            background-position: center center; /* Center the image */
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+            color: black;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 1s;
+        }
+
+        .section-title {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        /* Metrics Styling */
+        .metrics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+            animation: slideIn 2s forwards;
+        }
+
+        .metric {
+            background-color: #ffffff;
+            border: 2px solid #dcdcdc;
+            border-radius: 10px;
+            margin: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 200px;
+            height: 150px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 1.5s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .metric:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .metric-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* Navbar Styles */
+        .topnav {
+            width: 100%;
+            background-color: #353636;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .topnav-left a {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .topnav-right a {
+            color: white;
+            font-size: 17px;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+        }
+
+        .topnav-right a:hover {
+            color: #52caf2;
+            background-color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .topnav-left,
+        .topnav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .topnav-right {
+            margin-left: auto;
+        }
+
+        /* Hover Effect */
+        .topnav-right a:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        /* Fade In & Slide In Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        img {
+            display: block;
+            margin: auto;
+            max-width: 100%;
+        }
+
+        /* Additional Body Content Styling */
+        .metrics .metric span {
+            font-size: 1.2rem;
+            animation: fadeIn 2s forwards;
+            animation-delay: 2s;
+        }
+
+        /* Increased size for the confusion matrix image */
+        .confusion-matrix img {
+            width: 80%; /* Adjust the width to increase size */
+            height: auto; /* Keep aspect ratio */
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="topnav">
+            <div class="topnav-left">
+                <a href="/" id="lg">Wound Diagnosis</a>
+            </div>
+            <div class="topnav-right">
+                <a href="{{ url_for('index') }}" id="lg">Prediction</a>
+                <a href="{{ url_for('logout') }}" id="lg">Logout</a>
+            </div>
+        </nav>
+        <br><br><br>
+        <div class="section-title">
+            <center>
+                <h2 class="mb-4">Performance Metrics</h2>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <div class="metric-title">Accuracy</div>
+                        <div class="metric-value">0.983</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-title">Precision</div>
+                        <div class="metric-value">0.907</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-title">Recall</div>
+                        <div class="metric-value">0.908</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-title">F-Measure</div>
+                        <div class="metric-value">0.908</div>
+                    </div>
+                </div>
+
+                <div class="confusion-matrix">
+                    <h3>Confusion Matrix</h3>
+                    <img class="confusion-img" src="../static/download.png" alt="Confusion Matrix">
+                </div>
+            </center>
+        </div>
+    </div>
+</body>
+
+</html>

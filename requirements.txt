@@ -1,0 +1,8 @@
+flask
+numpy
+tensorflow==2.13
+matplotlib
+opencv-python
+pillow
+
+#python==3.8
